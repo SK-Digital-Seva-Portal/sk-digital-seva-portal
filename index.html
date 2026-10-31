@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SK Digital Seva Portal</title>
+  <meta name="description" content="SK Digital Seva Portal - Online services dashboard">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+  <main class="shell">
+    <section id="authView" class="auth-layout">
+      <div class="brand-panel">
+        <div class="brand-mark">SK</div>
+        <p class="eyebrow">DIGITAL SERVICES • SIMPLE • SECURE</p>
+        <h1>SK Digital<br><span>Seva Portal</span></h1>
+        <p class="brand-copy">सरकारी और डिजिटल सेवाओं के लिए आपका एक ही ऑनलाइन पोर्टल।</p>
+        <div class="feature-pills"><span>✓ Customer Dashboard</span><span>✓ Admin Approval</span><span>✓ Service Directory</span></div>
+        <div class="brand-orbit orbit-one"></div><div class="brand-orbit orbit-two"></div>
+      </div>
+      <div class="auth-card">
+        <div class="mobile-brand"><span class="brand-mark small">SK</span><b>SK Digital Seva Portal</b></div>
+        <div class="tabs"><button class="tab active" data-tab="login">Login</button><button class="tab" data-tab="signup">Customer Signup</button></div>
+        <form id="loginForm" class="auth-form">
+          <p class="eyebrow blue">WELCOME BACK</p><h2>अपने अकाउंट में लॉगिन करें</h2><p class="muted">अपना registered email और password डालें।</p>
+          <label>Email address<input id="loginEmail" type="email" autocomplete="username" required placeholder="name@example.com"></label>
+          <label>Password<input id="loginPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="अपना password डालें"></label>
+          <button class="primary full" type="submit">Login <span>→</span></button>
+          <p class="form-note">नया Customer हैं? ऊपर Customer Signup चुनें।</p>
+        </form>
+        <form id="signupForm" class="auth-form hidden">
+          <p class="eyebrow blue">CREATE CUSTOMER ACCOUNT</p><h2>Customer Signup</h2><p class="muted">Signup के बाद Admin approval मिलने पर सेवाएं खुलेंगी।</p>
+          <label>पूरा नाम<input id="signupName" required maxlength="80" placeholder="अपना नाम"></label>
+          <label>Mobile Number <span class="optional">वैकल्पिक</span><input id="signupPhone" inputmode="tel" maxlength="15" placeholder="10 अंकों का मोबाइल नंबर"></label>
+          <label>Email address<input id="signupEmail" type="email" required placeholder="name@example.com"></label>
+          <label>Password<input id="signupPassword" type="password" required minlength="8" placeholder="कम से कम 8 characters"></label>
+          <button class="primary full" type="submit">Signup Request भेजें <span>→</span></button>
+          <p class="form-note">आपकी request Admin के पास approval के लिए जाएगी।</p>
+        </form>
+        <p class="security-note">🔒 सुरक्षित Login • अपना OTP या सरकारी पोर्टल का password किसी के साथ साझा न करें।</p>
+      </div>
+    </section>
+
+    <section id="appView" class="app hidden">
+      <aside class="sidebar">
+        <div class="side-brand"><span class="brand-mark small">SK</span><div><b>SK Digital Seva</b><small>PORTAL</small></div></div>
+        <div class="user-mini"><div class="avatar" id="avatar">S</div><div><b id="sideName">Customer</b><small id="sideRole">CUSTOMER</small></div></div>
+        <nav>
+          <button class="nav-link active" data-page="home"><span>⌂</span> Dashboard</button>
+          <button class="nav-link" data-page="services"><span>▦</span> All Services</button>
+          <button class="nav-link admin-only hidden" data-page="customers"><span>♙</span> Customer Approvals</button>
+          <button class="nav-link admin-only hidden" data-page="manage"><span>⚙</span> Manage Services</button>
+        </nav>
+        <div class="side-bottom"><div class="help-box"><b>Need help?</b><small>अपने Admin से संपर्क करें।</small></div><button id="logoutBtn" class="logout">↪ Logout</button></div>
+      </aside>
+      <section class="main-area">
+        <header class="topbar"><div><p class="eyebrow blue" id="pageEyebrow">YOUR WORKSPACE</p><h2 id="pageTitle">Dashboard</h2></div><div class="top-actions"><span class="status-dot"></span><span id="topUser">Welcome</span><div class="avatar small-avatar" id="topAvatar">S</div></div></header>
+        <div id="pendingBanner" class="pending-banner hidden"><b>⏳ Approval Pending</b><span>आपका account Admin approval के बाद active होगा।</span></div>
+        <div id="pageContent"></div>
+        <footer>© <span id="year"></span> SK Digital Seva Portal <span>Use official portals responsibly.</span></footer>
+      </section>
+    </section>
+  </main>
+  <script src="config.js"></script><script src="app.js"></script>
+</body></html>
